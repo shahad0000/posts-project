@@ -77,41 +77,49 @@
   <body class="text-center d-flex vh-100">
     <main class="form-signin m-auto w-50">
       <form class="d-flex gap-2 flex-column shadow p-4 rounded-1">
-        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+        <h1 class="h3 mb-3 fw-normal">Sign up</h1>
 
         <div class="form-floating">
           <input
-            type="usernme"
+            type="text"
             class="form-control"
             id="username-input"
             placeholder="username"
+            required
+            autocomplete="username"
           />
-          <label for="username-input">username</label>
+          <label for="username-input">Username</label>
         </div>
         <div class="form-floating">
           <input
+          autocomplete="new-password"
             type="password"
             class="form-control"
             id="password-input"
             placeholder="Password"
+            required
           />
           <label for="password-input">Password</label>
         </div>
         <div class="form-floating">
           <input
+          
             type="password"
             class="form-control"
             id="confirm-password"
             placeholder="Confirm Password"
+            autocomplete="new-password"
+            required
           />
           <label for="confirm-password">Confirm Password</label>
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary" id="submit">
+        <button class="w-100 btn btn-lg btn-primary" id="signUp-btn">
           Sign up
         </button>
         <p class="mt-5 mb-3 text-muted">
-          <a href="login.html">login ?</a>
+          Already have an account?
+          <a href="login.html">login here</a>
         </p>
       </form>
     </main>

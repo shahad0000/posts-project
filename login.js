@@ -1,31 +1,32 @@
-const apiUrl = "https://68225dacb342dce8004e0d7c.mockapi.io";
-let username = document.getElementById("username-input");
-let password = document.getElementById("password-input");
-let submitButton = document.getElementById("submit");
+document.addEventListener("DOMContentLoaded", () => {
+  let username = document.getElementById("username-input");
+  let password = document.getElementById("password-input");
+  let signInBtn = document.getElementById("signIn-btn");
 
-submitButton.addEventListener("click", async (e) => {
-  e.preventDefault();
-
-  login();
-});
-
-async function login() {
-  console.log(username, password);
-  try {
-    const res = await fetch(`${apiUrl}/login`);
-    const users = await res.json();
-    const userExist = users.find(
-      (u) => u.username === username.value && u.password === password.value
-    );
-    console.log(userExist);
-    if (userExist) {
-      localStorage.setItem("username", userExist.username);
-      alert("تم تسجيل الدخول");
-      window.location.href = "/index.html";
-    } else {
-      alert("username or passowrd err");
+  const login = async () => {
+    try {
+      const res = await fetch(
+        "https://68219a10259dad2655afc1c9.mockapi.io/login"
+      );
+      const users = await res.json();
+      const userExist = users.find(
+        (user) =>
+          user.username === username.value && user.password === password.value
+      );
+      if (userExist) {
+        localStorage.setItem("username", userExist.username);
+        alert("You have successfully logged in!");
+        window.location.href = "/index.html";
+      } else {
+        alert("Invalid username or password.");
+      }
+    } catch (err) {
+      console.error("error login", err);
     }
-  } catch (err) {
-    console.log("error login", err);
-  }
-}
+  };
+
+  signInBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    login();
+  });
+});

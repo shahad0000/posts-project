@@ -76,17 +76,17 @@
   </head>
   <body class="text-center d-flex vh-100">
     <main class="form-signin m-auto w-50">
+      <!----------------------------- Login form ----------------------------->
       <form class="d-flex gap-2 flex-column shadow p-4 rounded-1">
-        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
+        <h1 class="h3 mb-3 fw-normal">Sign in</h1>
         <div class="form-floating">
           <input
-            type="usernme"
+            type="username"
             class="form-control"
             id="username-input"
-            placeholder="username"
+            placeholder="Username"
           />
-          <label for="username-input">username</label>
+          <label for="username-input">Username:</label>
         </div>
         <div class="form-floating">
           <input
@@ -95,7 +95,7 @@
             id="password-input"
             placeholder="Password"
           />
-          <label for="password-input">Password</label>
+          <label for="password-input">Password:</label>
         </div>
 
         <div class="checkbox mb-3">
@@ -103,7 +103,7 @@
             <input type="checkbox" value="remember-me" /> Remember me
           </label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" id="submit">
+        <button class="w-100 btn btn-lg btn-primary" id="signIn-btn">
           Sign in
         </button>
         <p class="mt-5 mb-3 text-muted">

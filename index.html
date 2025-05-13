@@ -13,9 +13,10 @@
     <title>Home page</title>
   </head>
   <body>
+    <!----------------------------- Navbar ----------------------------->
     <nav class="navbar bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand">Navbar</a>
+        <a class="navbar-brand">Post</a>
         <div>
           <button
             onclick="login()"
@@ -26,23 +27,28 @@
               >Login</a
             >
           </button>
+
           <button onclick="logout()" id="logout-link" class="d-none">
             logOut
           </button>
         </div>
       </div>
     </nav>
-    <section class="d-flex flex-column w-50 gap-2 m-auto">
+
+    <!----------------------------- Post form ----------------------------->
+    <form class="d-flex flex-column w-50 gap-2 m-auto">
       <h2>add post</h2>
       <input placeholder="add imageUrl" type="text" id="imageUrl" required />
       <input placeholder="add text" type="text" id="postText" />
-      <button id="submit">post</button>
-    </section>
+      <button type="submit" id="submit-post">post</button>
+    </form>
+
     <section id="posts-container"></section>
     <script src="main.js"></script>
     <script>
-      const u = localStorage.getItem("username");
-      if (u) {
+      
+      // if user is loggedIn display the logOut btn otherwise display the login btn
+      if (localStorage.getItem("username")) {
         document.getElementById("logout-link").className =
           "d-flex btn btn-outline-danger";
       } else {
