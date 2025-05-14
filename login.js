@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (userExist) {
         localStorage.setItem("username", userExist.username);
         alert("You have successfully logged in!");
-        window.location.href = "/index.html";
+        window.location.href = "/posts-project/index.html";
       } else {
         alert("Invalid username or password.");
       }
