@@ -82,7 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
       comList.classList.add("mt-5", "list-unstyled")
       comInput.classList.add("com-input");
       comInput.placeholder = "Add comment...."
-      sendCom.classList.add("btn", "btn-secondary", "send-com");
+      sendCom.classList.add("btn", "text-white", "send-com");
+      sendCom.style.backgroundColor = "rgba(79, 70, 118, 0.908)"
       card.classList.add("card", "p-3");
       username.classList.add("card-title", "post-username");
       img.classList.add("card-img-top", "my-3");

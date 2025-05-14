@@ -18,7 +18,7 @@
     <!----------------------------- Navbar ----------------------------->
     <nav class="navbar bg-light " >
       <div class="container-fluid">
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">New Post +</button>
+        <button style="background-color: rgba(79, 70, 118, 0.908);" type="button" class="btn text-white" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">New Post +</button>
 
         <div>
           <button id="login-link" class="btn btn-success d-none">
@@ -40,11 +40,11 @@
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <form id="post-form" class="d-flex flex-column w-50 gap-2 m-auto">
+          <form style="background-color:rgb(248, 248, 248);" id="post-form" class="form p-3 d-flex flex-column gap-4">
             <h2>add post</h2>
-            <input placeholder="add imageUrl" type="text" id="imageUrl" required />
-            <input placeholder="add text" type="text" id="postText" />
-            <button type="submit" id="submit-post">post</button>
+            <input class="form-control" placeholder="Add image URL" type="text" id="imageUrl" required />
+            <input class="form-control" placeholder="Add description" type="text" id="postText" />
+            <button style="background-color: rgba(79, 70, 118, 0.908);" class="btn text-white" type="submit" id="submit-post">Post</button>
           </form>
       
         </div>
