@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       );
       alert("You signed in successfully!");
-      window.location.href = "/login.html";
+      window.location.href = "/posts-project/login.html";
     } catch (error) {
       console.log("Error:", error);
     }
