@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const logOutBtn = document.getElementById("logout-link");
-  const logInBtn = document.getElementById("login-link");
   const imageUrl = document.getElementById("imageUrl");
   const postText = document.getElementById("postText");
   const postForm = document.getElementById("post-form");
@@ -32,10 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const delCmnt = async (post, index) => {
-    const confirm = window.confirm("Are you sure you want to delete this post?");
+    const confirm = window.confirm(
+      "Are you sure you want to delete this post?"
+    );
     if (!confirm) return;
 
-    const updatedCmnts = post.comment.filter((_, i) => i !== index)
+    const updatedCmnts = post.comment.filter((_, i) => i !== index);
 
     const res = await fetch(
       `https://68219a10259dad2655afc1c9.mockapi.io/post/${post.id}`,
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         body: JSON.stringify({
           ...post,
-          comment: updatedCmnts
+          comment: updatedCmnts,
         }),
       }
     );
@@ -74,16 +75,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const comList = document.createElement("ul");
       const addComDiv = document.createElement("div");
 
+
+  // Disable comment if user is not logged in
+   sendCom.disabled = localStorage.getItem("username") ? false : true ;
+   comInput.placeholder = localStorage.getItem("username") ? "Type a comment...." : "Sign in to send a comment" ;
+
       outerDiv.classList.add("col-12", "col-md-6", "mb-4");
       commentsDiv.classList.add("col-md-4", "com-div");
       addComDiv.classList.add("add-com-div");
       addComDiv.appendChild(comInput);
       addComDiv.appendChild(sendCom);
-      comList.classList.add("mt-5", "list-unstyled")
-      comInput.classList.add("com-input");
-      comInput.placeholder = "Add comment...."
+      comList.classList.add("mt-5", "list-unstyled");
+      comInput.classList.add("com-input", "px-3");
       sendCom.classList.add("btn", "text-white", "send-com");
-      sendCom.style.backgroundColor = "rgba(79, 70, 118, 0.908)"
+      sendCom.style.backgroundColor = "rgba(79, 70, 118, 0.908)";
       card.classList.add("card", "p-3");
       username.classList.add("card-title", "post-username");
       img.classList.add("card-img-top", "my-3");
@@ -91,13 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
       postBody.classList.add("card-body");
       postText.classList.add("card-text");
       commentsDiv.classList.add("mb-4");
-      deleteBtn.classList.add("btn", "btn-outline-danger")
+      deleteBtn.classList.add("btn", "btn-outline-danger");
       username.innerText = post.username;
       img.src = post.imageUrl;
       title.innerText = post.text;
 
       sendCom.innerText = "Send";
-      deleteBtn.innerText = "Delete"
+      deleteBtn.innerText = "Delete";
       const renderCmnts = () => {
         comList.innerText = "";
         post.comment.map((cmnt, index) => {
@@ -106,7 +111,11 @@ document.addEventListener("DOMContentLoaded", () => {
           const cmntContent = document.createElement("h4");
           const delCmntBtn = document.createElement("button");
           const innerComDiv = document.createElement("div");
-          innerComDiv.classList.add("inner-com-div", "d-flex", "justify-content-between")
+          innerComDiv.classList.add(
+            "inner-com-div",
+            "d-flex",
+            "justify-content-between"
+          );
           innerComDiv.appendChild(cmntContent);
 
           delCmntBtn.classList.add("btn", "btn-outline-danger");
@@ -114,17 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
           cmntUser.innerText = cmnt.username;
           cmntContent.innerText = cmnt.comText;
 
-          cmntLi.classList.add("border", "p-3", "m-2", "bg-white")
+          cmntLi.classList.add("border", "p-3", "m-2", "bg-white");
 
           cmntLi.appendChild(cmntUser);
           cmntLi.appendChild(innerComDiv);
           comList.appendChild(cmntLi);
-          
+
           if (localStorage.getItem("username") === cmnt.username) {
-          innerComDiv.appendChild(delCmntBtn);
-            delCmntBtn.onclick = () => delCmnt(post, index)
+            innerComDiv.appendChild(delCmntBtn);
+            delCmntBtn.onclick = () => delCmnt(post, index);
           }
-          
         });
       };
       renderCmnts();
